@@ -68,3 +68,13 @@ that gets the package onto disk.
 Then add a provider entry named `deepseek` in `~/.rebon/providers` and select
 it. Configuration, models, and the cost notes are in
 [`plugins/deepseek-responses/README.md`](plugins/deepseek-responses/README.md).
+
+## License
+
+Licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or
+[MIT license](LICENSE-MIT) at your option. Rebon itself is not open source;
+these plugins are.
+
+`plugins/deepseek-responses` reproduces material from DeepSeek Harness under
+its own MIT license — see the `NOTICE` and `LICENSE-DEEPSEEK-HARNESS` beside
+it.

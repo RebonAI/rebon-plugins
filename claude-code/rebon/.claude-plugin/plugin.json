@@ -9,7 +9,7 @@
   },
   "homepage": "https://reboncode.ai",
   "repository": "https://github.com/RebonAI/rebon-plugins",
-  "license": "MIT",
+  "license": "MIT OR Apache-2.0",
   "keywords": [
     "rebon",
     "delegation",
