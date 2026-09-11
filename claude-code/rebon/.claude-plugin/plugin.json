@@ -4,9 +4,10 @@
   "description": "Delegate a whole turn to the Rebon agent harness: its own models, its own tools, its own unattended budget.",
   "version": "0.1.0",
   "author": {
-    "name": "Quorafind"
+    "name": "Rebon AI",
+    "url": "https://reboncode.ai"
   },
-  "homepage": "https://github.com/RebonAI/rebon-plugins",
+  "homepage": "https://reboncode.ai",
   "repository": "https://github.com/RebonAI/rebon-plugins",
   "license": "MIT",
   "keywords": [

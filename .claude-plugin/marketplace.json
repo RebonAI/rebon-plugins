@@ -3,7 +3,7 @@
   "description": "Plugins for and around Rebon. Currently: the Claude Code surface that hands a whole turn to the Rebon agent harness.",
   "owner": {
     "name": "Rebon AI",
-    "url": "https://github.com/RebonAI"
+    "url": "https://reboncode.ai"
   },
   "plugins": [
     {

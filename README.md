@@ -1,6 +1,13 @@
-# rebon-plugins
+# Rebon Plugins
 
-Plugins for and around [Rebon](https://github.com/Quorafind/Rebon-Releases).
+The publishing repository for plugins built by the Rebon team.
+
+Rebon is an agent harness — [reboncode.ai](https://reboncode.ai).
+
+This repository is a distribution channel, not a workspace. The plugins here
+are developed in Rebon's own repository and copied out on release, so issues
+and pull requests are closed and only first-party plugins are published here.
+Report anything you find through [reboncode.ai](https://reboncode.ai).
 
 Two different plugin systems live here, and they install in two different
 ways. Pick the directory that matches the host you are extending.
@@ -29,8 +36,7 @@ That gives you two surfaces over the same call:
 - the `delegate` subagent — the same call in the background, visible in the
   agent view.
 
-Both shell out to `rebon exec`, so [Rebon](https://github.com/Quorafind/Rebon-Releases)
-must be installed and on `PATH`:
+Both shell out to `rebon exec`, so Rebon must be installed and on `PATH`:
 
 ```sh
 npm install -g rebon
@@ -38,11 +44,10 @@ npm install -g rebon
 
 ### A subagent per provider
 
-`scripts/sync_claude_plugin_agents.py` in the Rebon repository generates one
-subagent per entry in your own `~/.rebon/providers` directory, so a turn can
-be handed to any provider you have configured. Those files describe one
-machine's provider store rather than the plugin's contents, so they are not
-checked in here — run the script against your own checkout if you want them.
+Rebon ships a script that generates one subagent per entry in your own
+`~/.rebon/providers` directory, so a turn can be handed to any provider you
+have configured. Those files describe one machine's provider store rather
+than the plugin's contents, so they are not published here.
 
 ## Rebon: `deepseek-responses`
 
@@ -57,15 +62,9 @@ rebon plugin install ./rebon-plugins/plugins/deepseek-responses
 ```
 
 `rebon plugin install` takes a local directory path. There is no remote
-install path yet, so cloning (or downloading the directory) is the step that
-gets the package onto disk.
+install path yet, so cloning — or downloading the directory — is the step
+that gets the package onto disk.
 
 Then add a provider entry named `deepseek` in `~/.rebon/providers` and select
 it. Configuration, models, and the cost notes are in
 [`plugins/deepseek-responses/README.md`](plugins/deepseek-responses/README.md).
-
-## Provenance
-
-These directories are copies of `claude-plugin/` and
-`plugins/deepseek-responses/` in the Rebon repository, which is where they are
-developed. File issues against Rebon.
