@@ -1,0 +1,30 @@
+# GitHub has no switch that turns pull requests off on a public repository,
+# and forking cannot be disabled on one either. This is the switch: every
+# incoming pull request is answered and closed.
+#
+# pull_request_target, not pull_request: a fork's pull_request run gets a
+# read-only token and could not close anything. Nothing from the fork is
+# checked out or executed here, so running with repository permissions is
+# safe — this workflow only writes a comment.
+name: Close pull requests
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.html_url }}
+        run: |
+          gh pr close "$PR" --comment \
+            "Thanks for the interest. This repository publishes Rebon's own
+            plugins and is a copy of work developed elsewhere, so changes made
+            here would be overwritten on the next release and pull requests are
+            not accepted. Reach us through https://reboncode.ai."
