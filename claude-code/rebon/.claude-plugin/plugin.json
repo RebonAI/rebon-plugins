@@ -1,8 +1,8 @@
 {
   "name": "rebon",
   "displayName": "Rebon",
-  "description": "Delegate a whole turn to the Rebon agent harness: its own models, its own tools, its own unattended budget.",
-  "version": "0.1.0",
+  "description": "Delegate a task to the Rebon agent harness as a background job — its own models, its own tools, its own unattended budget — and get the outcome pushed back over an MCP channel.",
+  "version": "0.2.0",
   "author": {
     "name": "Rebon AI",
     "url": "https://reboncode.ai"
@@ -14,6 +14,14 @@
     "rebon",
     "delegation",
     "agents",
-    "unattended"
-  ]
+    "unattended",
+    "mcp",
+    "channels"
+  ],
+  "mcpServers": {
+    "rebon": {
+      "command": "rebon",
+      "args": ["mcp", "serve"]
+    }
+  }
 }

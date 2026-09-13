@@ -19,28 +19,45 @@ ways. Pick the directory that matches the host you are extending.
 
 ## Claude Code: `rebon`
 
-Hands a whole turn to Rebon — its own model, its own tools, its own plugins,
-its own unattended budget — and reports what it said. Useful when a subtask
-stands on its own, should run on a different or cheaper model than the
-session you are in, or is long enough that holding it in that context would
-crowd it.
+Hands a task to Rebon as a background job — its own model, its own tools,
+its own plugins, its own unattended budget — and brings the outcome back to
+the session. Useful when a subtask stands on its own, should run on a
+different or cheaper model than the session you are in, or is long enough
+that holding it in that context would crowd it.
 
 ```
 /plugin marketplace add RebonAI/rebon-plugins
 /plugin install rebon@rebon-plugins
 ```
 
-That gives you two surfaces over the same call:
-
-- `/rebon:delegate <task>` — run it in the current session and read the answer.
-- the `delegate` subagent — the same call in the background, visible in the
-  agent view.
-
-Both shell out to `rebon exec`, so Rebon must be installed and on `PATH`:
+The plugin declares an MCP server, `rebon mcp serve`, so Rebon 1.2.0 or later
+must be installed and on `PATH`:
 
 ```sh
 npm install -g rebon
 ```
+
+That gives you two surfaces over the same server:
+
+- `/rebon:delegate <task>` — start the job from the current session.
+- the `delegate` subagent — the same start in the background, visible in the
+  agent view.
+
+`exec_start` returns a job id at once. The job belongs to Rebon's background
+supervisor rather than to Claude Code, so no Bash timeout cuts it off and
+closing the session leaves it running; `rebon agents` and `rebon attach` show
+it like any other job.
+
+When the job finishes, or stops to ask a question or for permission, the
+server pushes a message back into the session. Claude Code only takes those
+pushes from a plugin named at start-up:
+
+```sh
+claude --dangerously-load-development-channels plugin:rebon@rebon-plugins
+```
+
+Without the flag every tool still works; ask Claude to check the job, and
+`job_status` answers what the push would have said.
 
 ### A subagent per provider
 

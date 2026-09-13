@@ -1,6 +1,6 @@
 {
   "name": "rebon-plugins",
-  "description": "Plugins for and around Rebon. Currently: the Claude Code surface that hands a whole turn to the Rebon agent harness.",
+  "description": "Plugins for and around Rebon. Currently: the Claude Code surface that hands a task to the Rebon agent harness.",
   "owner": {
     "name": "Rebon AI",
     "url": "https://reboncode.ai"
@@ -9,7 +9,7 @@
     {
       "name": "rebon",
       "source": "./claude-code/rebon",
-      "description": "Delegate a whole turn to the Rebon agent harness: its own models, its own tools, its own unattended budget."
+      "description": "Delegate a task to the Rebon agent harness as a background job — its own models, its own tools, its own unattended budget — and get the outcome pushed back over an MCP channel."
     }
   ]
 }
